@@ -4,16 +4,42 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <title>Coding Quiz</title>
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <script defer src="./assets/script.js"></script>
     </head>
     <body>
         <header>
-            <h1>Coding Quiz Assessment</h1>
-        </header>
-        <main>
             
-        </main>
-        <script src="./assets/script.js" defer></script>
+        </header>
+        <!-- container of the whole page -->
+        <div class="container">
+            <h3 id="timer" class="hide">Time:</h3>
+
+            <!-- Title Screen -->
+            <div class="homeTxt" >
+                <h1>Programming Assesstment</h1>
+                <h2>Quiz your knowledge on basic JavaScript!</h2>
+            </div>
+
+            <!-- questions + answers container -->
+            <div id="q-container" class="hide">
+                <div id="question">Question</div>
+                <div id="answers-btn" class="grid-btn">
+                    <button class="btn">Choice 1</button>
+                    <button class="btn">Choice 2</button>
+                    <button class="btn">Choice 3</button>
+                    <button class="btn">Choice 4</button>
+                </div>
+            </div>
+
+            <!-- essential buttons -->
+            <div class="buttons">
+                <button id="start-btn" class="start-btn btn">Start Quiz</button>
+                <button id="high-score-btn" class="high-score btn ">High Scores 👑</button>
+                <button id="next-btn" class="class-btn btn hide">Next</button>
+            </div>
+        </div>
+
     </body>
 </html>
