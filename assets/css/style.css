@@ -61,8 +61,10 @@ h3 {
     background-color: var(--color-wrong);
 }
 
+
+/* to hide elements once the the Start button has been clicked */
 .hide {
-    /* display: none; */
+     display: none; 
 }
 
 #timer {

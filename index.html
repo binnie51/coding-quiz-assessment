@@ -4,27 +4,24 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Coding Quiz</title>
+        <title>JS Fundamental Quiz</title>
         <link rel="stylesheet" href="./assets/css/style.css" />
         <script defer src="./assets/script.js"></script>
     </head>
     <body>
-        <header>
-            
-        </header>
         <!-- container of the whole page -->
         <div class="container">
-            <h3 id="timer" class="hide">Time:</h3>
+            <h3 id="timer" class="hide"></h3>
 
             <!-- Title Screen -->
-            <div class="homeTxt" >
+            <div id="homeTxt" >
                 <h1>Programming Assesstment</h1>
                 <h2>Quiz your knowledge on basic JavaScript!</h2>
             </div>
 
             <!-- questions + answers container -->
             <div id="q-container" class="hide">
-                <div id="question">Question</div>
+                <div id="question">Question:</div>
                 <div id="answers-btn" class="grid-btn">
                     <button class="btn">Choice 1</button>
                     <button class="btn">Choice 2</button>
@@ -36,10 +33,18 @@
             <!-- essential buttons -->
             <div class="buttons">
                 <button id="start-btn" class="start-btn btn">Start Quiz</button>
-                <button id="high-score-btn" class="high-score btn ">High Scores 👑</button>
+                <button id="high-score-btn" class="high-score btn" onclick="">High Scores 👑</button>
                 <button id="next-btn" class="class-btn btn hide">Next</button>
             </div>
-        </div>
 
+            <!-- Score Board -->
+            <div class="highScoreResult hide">
+                <p>Congrats! You've finshed the Quiz!</p>
+                <label for="userInit">Enter your initials:</label><br>
+                <input type="text" id="userInit">
+                <input type="submit" class="submit">
+            </div>
+        </div>
+            
     </body>
 </html>
