@@ -27,11 +27,27 @@ h3 {
     width: 800px;
     max-width: 80%;
     padding: 10px;
-    
 }
 
-.homeTxt {
-    text-align: center;
+.buttons1 {
+    display: flex;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 30px;
+    font-size: 50;
+}
+
+buttons2 {
+
+
+}
+
+.highScoreResult{
+    position: absolute;
+    bottom: 300px;
+    left: 430px;
+    
 }
 
 .grid-btn {
@@ -64,11 +80,17 @@ h3 {
 
 /* to hide elements once the the Start button has been clicked */
 .hide {
-     display: none; 
+    display: none; 
+}
+
+#homeTxt{
+    text-align: center;
+    padding-bottom: 30px;
 }
 
 #timer {
-    text-align: center;
+    display: flex;
+    align-content: flex-end;
 }
 
 #start-btn {
@@ -78,4 +100,9 @@ h3 {
 
 #high-score-btn {
     background-color: #D4B139;
+}
+
+#endTxt {
+    padding-bottom: 30px;
+    
 }
