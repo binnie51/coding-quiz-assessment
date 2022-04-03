@@ -6,12 +6,13 @@
 
 body {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 2rem;
     font-size: 20;
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw; */
+    /* max-width: 80rem; */
+    /* height: 100vh; */
     justify-content: center;
     align-items: center;
     background-color: midnightblue;
@@ -19,62 +20,91 @@ body {
     color:aliceblue;
 }
 
-h3 {
-    display:flex;
-    right: 0px;
+h1,
+h2 {
+    text-align: center;
 }
+
+
+h3 {
+    font-size: 10;
+}
+
 .container{
     width: 800px;
     max-width: 80%;
     padding: 10px;
 }
 
+.q-container {
+    display: flex;
+    margin: 20px;
+}
+
+/* styling on the home page */
+#homeTxt {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .buttons1 {
     display: flex;
-    align-content: space-around;
+    justify-content: space-around;
     flex-direction: column;
-    flex-wrap: wrap;
     padding: 30px;
-    font-size: 50;
 }
 
-buttons2 {
-
-
-}
-
-.highScoreResult{
-    position: absolute;
-    bottom: 300px;
-    left: 430px;
+/* buttons2 {
     
 }
 
-.grid-btn {
-    display: grid;
-    margin: 20px 0;
-    grid-template-columns: repeat(2, auto);
+.highScoreResult{
+   
+    
+} */
+
+/* buttons styling */
+.column-btn {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+    background-color: var(--color-neutral);
 }
 
 .btn {
     background-color: var(--color-neutral);
     border-radius: 5px;
-    cursor: pointer;
-    transition: transform 150ms;
-    padding: 5px 20px;
-
+    font-size: 100;
+    padding: 10px 30px;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    width: 10rem;
+    
 }
 
 .btn:hover {
-    border: black;
+    cursor: pointer;
+    transform: transform 150ms;
+    transform: scale(1.03);
+
 }
 
-.btn.correct {
-    background-color: var(--color-right);
+.btn[disabled]:hover {
+    cursor: not-allowed;
+    transform: none;
 }
 
-.btn.incorrect {
-    background-color: var(--color-wrong);
+.start-btn {
+    background-color:#9A6716;
+    color: var(--color-neutral);
+    
+}
+
+.high-score {
+    background-color: #D4B139;
 }
 
 
@@ -83,26 +113,34 @@ buttons2 {
     display: none; 
 }
 
-#homeTxt{
-    text-align: center;
-    padding-bottom: 30px;
-}
+
 
 #timer {
+    display: inline;
+    padding-right: 30px;
+}
+
+#score {
+    display: inline;
+    flex-direction: row-reverse;
+}
+
+#choices {
     display: flex;
-    align-content: flex-end;
+    margin-bottom: 0.8rem;
+    width: 100%;
 }
 
-#start-btn {
-    background-color:#9A6716;
-    color: var(--color-neutral);
-}
-
-#high-score-btn {
-    background-color: #D4B139;
+#answerReveal {
+    bottom: 30px;
+    right: 0;
 }
 
 #endTxt {
     padding-bottom: 30px;
-    
+}
+
+#highScoreResult {
+    display: flex;
+    justify-content: center;
 }

@@ -1,21 +1,13 @@
 const startButton = document.getElementById('start-btn');
 const qsContainerEl = document.getElementById('q-container');
-const titleTxt = document.getElementById('homeTxt');
+const titleTxt = document.getElementById('title');
 const hsBtnEl = document.getElementById('high-score-btn');
-const nextBtnEl = document.getElementById('next-btn');
-const endBtnEl = document.getElementById('end-btn');
 var timeEl = document.getElementById('timer');
 const questionEl = document.getElementById('question');
 const answerEl = document.getElementById('choices');
 const highScoreEl = document.querySelector('.highScoreResult')
 const feedbackEl = document.getElementById('answerReveal');
-
-// Necessary empty variables
-var nowQuestion = {}
-var answerCorrect =  true
-var score = 0
-var qCounter = 0
-var numOfQuestions = []
+var scoreEl = document.getElementById('score');
 
 // Series of question stored in variable 'questions'
 const questions = [
@@ -36,8 +28,8 @@ const questions = [
     },
     {
         question: 'How would you write "Hello JavaScript" in an alert box?',
-        choices: ['alert("Hello JavaScript)', 'alertBox("Hello JavaScript"', 'msg("Hello JavaScript")', 'msgBox("Hello JavaScript")'],
-        var: 'alert("Hello JavaScript)'
+        choices: ['alert("Hello JavaScript")', 'alertBox("Hello JavaScript"', 'msg("Hello JavaScript")', 'msgBox("Hello JavaScript")'],
+        answer: 'alert("Hello JavaScript")'
     },
     {
         question: 'How does a FOR loop start?',
@@ -46,16 +38,8 @@ const questions = [
     }
 ];
 
-const maxPoint = 100;
-const maxQs = 5;
-
-// To randomized questions in a stored variable 'questions'
+// Variable to randomized questions in a stored variable 'questions' and index of the questions' array
 var randomizedQs, questionIndexNow
-
-// function showQs(question) {
-//     questionEl.innerHTML = question.question;
-//     question.answers.forEach  
-// }
 
 // Hides the elements on title page once user click on 'Start Quiz' and proceeds to display questions 
 startButton.addEventListener('click', gameStart);
@@ -67,24 +51,22 @@ function gameStart() {
     titleTxt.classList.add('hide');
     hsBtnEl.classList.add('hide');
     qsContainerEl.classList.remove('hide');
-    nextBtnEl.classList.remove('hide');
-    endBtnEl.classList.remove('hide');
     timeEl.classList.remove('hide');
 
+    timeEl.textContent = "Time: 75";
+    scoreEl.textContent = "Score: " + score;
+
+    // randomized question
     randomizedQs = questions.sort(() => Math.random() - .5);
+
     questionIndexNow = 0;
 
     timerId = setInterval(clockTick, 1000);
 
-    nextQuestion(); // called function to display question after clicking on start quiz 
-
+    nextQuestion();
 }
 
-// Setting timer for quiz takers
-// var secLeft = 75;
-
 function clockTick() {
-       
         secLeft--;
         timeEl.textContent = "Time: " + secLeft;
 
@@ -98,8 +80,8 @@ function clockTick() {
    
 }
 
-// Display following question 
-;
+// Start & display question 
+var score = 0;
 function nextQuestion() {
     // showQs(randomizedQs,[questionIndexNow]); 
 
@@ -107,7 +89,7 @@ function nextQuestion() {
 
     var questionEl = document.getElementById('question');
     questionEl.textContent = currentQuestion.question;
-    answerEl.innerHTML ="";
+    answerEl.innerHTML = "";
 
     currentQuestion.choices.forEach(function(choice) {
         var choiceNode = document.createElement('button');
@@ -118,24 +100,23 @@ function nextQuestion() {
         choiceNode.onclick = questionClick;
         answerEl.appendChild(choiceNode);
     })
-
-
-    // if (numOfQuestions.length === 0 || qCounter > maxQs) {
-    //     localStorage.setItem('recentHighScore', score);
-    //     return window.location.assign()
-    // }
 }
 
+// when the users choose the correct/wrong anwers. it'll deduct 15 sec on every wronmg answer 
 function questionClick() {
     if (this.value !== questions[questionIndexNow].answer ) {
         secLeft -= 15;
         if (secLeft < 0) {
             secLeft = 0;
+            clearInterval(secLeft);
         }
-        timeEl.textContent = secLeft;
+        timeEl.textContent = "Time:" + secLeft;
+        scoreEl.textContent = "Score: " + score;
 
-        feedbackEl.textContent = "wrong!";
+        feedbackEl.textContent = "Wrong! 15 seconds deduct.";
     } else {
+        score += 20;
+        scoreEl.textContent = "Score: " + score;
         feedbackEl.textContent = "Correct!";
     }
 
@@ -150,17 +131,86 @@ function questionClick() {
     questionIndexNow++;
     if (questionIndexNow === questions.length) {
         quizEnd();
-    } else {
+        clearInterval(timerId);
+        timeEl.textContent = "";
+    } 
+    else {
         nextQuestion();
     }
 }
 
 // function for score board input
 function quizEnd() {
-    clearInterval(timerId);
+    // clearInterval(timerId);
     qsContainerEl.classList.add('hide');
-    nextBtnEl.classList.add('hide');
-    endBtnEl.classList.add('hide');
+    scoreEl.innerHTML = "";
+
     highScoreEl.classList.remove('hide'); 
+    finalScoreEl.textContent = score;
     
+    // note: know what child and parent 
 }
+
+// End page and storing results into local storage
+const usernameEl = document.querySelector('#username')
+const saveScoreBtnEl = document.querySelector('#saveScoreBtn')
+const finalScoreEl = document.querySelector('#finalScore')
+
+const hsDisplayEl = document.querySelector('#highScoresPage')
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+
+usernameEl.addEventListener('keyup', () => {
+    saveScoreBtnEl.disabled = !usernameEl.value
+})
+
+// function displayHighScore() {
+//     if(highScores !== null) {
+//         document.querySelector('#hsList').textContent = highScores.finalScoreEl + " " + highScores.usernameEl
+//     }
+// }
+
+const highScoreList = document.querySelector('li');
+
+function displayHighScore() {
+    // document.querySelector('#hsList').textContent = highScores.usernameEl + " " + highScores.finalScoreEl
+    console.log(highScores);
+    return highScores;
+}
+highScoreList.textContent = highScores;
+
+document.querySelector(".highScoreResult").addEventListener('click', function(event) {
+    
+    if(event.target.matches('#saveScoreBtn')){
+        // var initial = usernameEl.value;
+        // var final = finalScoreEl.value;
+        event.preventDefault();
+        const score = {
+            score: finalScoreEl.value,
+            name: usernameEl.value
+        };
+        highScores.push(score);
+
+        
+        highScores.sort( (a, b) =>  b.score - a.score);
+        localStorage.setItem('highscores', JSON.stringify(highScores));
+        // hsDisplayEl.classList.remove('hide'); // displaying highscore page
+        // highScoreEl.classList.add('hide');
+        
+        displayHighScore();
+    }
+})
+// saveHighScore = e => {
+//     e.preventDefault()
+
+//     const score = {
+//         score: mostRecentScore,
+//         name: usernameEl.value
+//     };
+//     highScores.push(score);
+
+//     highScores.sort( (a, b) =>  b.score - a.score); (not nedded!)
+
+//     localStorage.setItem('highscores', JSON.stringify(highScores));
+//     window.location.assign('highscores.html');
+// }

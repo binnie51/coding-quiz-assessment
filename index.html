@@ -11,47 +11,56 @@
     <body>
         <!-- container of the whole page -->
         <div class="container">
-            <h3 id="timer" class=""></h3>
-
             <!-- Title Screen -->
-            <div id="homeTxt" >
-                <h1>Programming Assesstment</h1>
-                <h2>Quiz your knowledge on basic JavaScript!</h2>
+            <div id="homeTxt" class="">
+                <h1 id="title">Basic JavaScript Quiz</h1>
+                
+                <!-- essential buttons -->
+                <div class="buttons1">
+                    <button id="start-btn" class="start-btn btn">Start Quiz</button>
+                    <button id="high-score-btn" class="high-score btn" >High Scores 👑</button>
+                    <!-- <button id="next-btn" class="class-btn btn hide">Next</button> -->
+                </div>
             </div>
 
+            <!-- timer and score tracking -->
+            <h3 id="timer" class=""></h3>
+            <h3 id="score" class=""></h3>
+            
             <!-- questions + answers container -->
             <div id="q-container" class="hide">
                 <div id="question">Question:</div>
-                <div id="choices" class="grid-btn">
+                <div id="choices" class="column-btn"></div>
                     <!-- <button class="btn">Choice 1</button>
                     <button class="btn">Choice 2</button>
                     <button class="btn">Choice 3</button>
                     <button class="btn">Choice 4</button> -->
-                    <div id="answerReveal" class="feedback hide"></div>
-                </div>
+                <div id="answerReveal" class=""></div>
             </div>
 
-            <!-- essential buttons -->
-            <div class="buttons1">
-                <button id="start-btn" class="start-btn btn">Start Quiz</button>
-                <button id="high-score-btn" class="high-score btn" onclick="">High Scores 👑</button>
-                <!-- <button id="next-btn" class="class-btn btn hide">Next</button> -->
-            </div>
-
-            <!-- proceeds/cease buttons -->
-            <div class="buttons2">
+            <!-- cease button (not needed?)-->
+            <!-- <div class="buttons2">
                 <button id="next-btn" class="class-btn btn hide">Next</button>
                 <button id="end-btn" class="class-btn btn hide">End Quiz</button>
-            </div>
+            </div> -->
 
-            <!-- Score Board -->
+            <!-- End Page -->
             <div class="highScoreResult hide">
-                <h2 id="endTxt">Congrats! You've finshed the Quiz!</h2>
-                <div id="initInput">
-                    <label for="userInit">Enter your initials:</label><br>
-                    <input type="text" id="userInit">
-                    <input type="submit" class="submit">
-                </div>    
+                <h1 id="finalScore"></h1>
+                <h2 id="endTxt">You've finshed the Quiz! 🙌</h2>
+                <form class="end-form-container">
+                    <h2>Enter your initials below:</h2>
+                    <input type="text" name="name" id="username" placeholder="Enter your initials">
+                    <button class="" id="saveScoreBtn" type="submit" >Save</button>  
+                </form>
+                <div id="highScoresPage" class="hide">
+                    <h1>JavaScricpt Champs</h1>
+                    <ul id="hsList"></ul>
+                        <li></li>
+                        <li></li>
+                    <!-- <a href="index.html" class="btn">Play Again!</a> -->
+                </div>
+                
             </div>
         </div>
 
