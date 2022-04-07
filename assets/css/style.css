@@ -22,7 +22,8 @@ body {
 
 h1,
 h2 {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -39,6 +40,14 @@ h3 {
 .q-container {
     display: flex;
     margin: 20px;
+}
+
+.highScorePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin: auto;
 }
 
 /* styling on the home page */
@@ -143,4 +152,18 @@ h3 {
 #highScoreResult {
     display: flex;
     justify-content: center;
+}
+
+#hsList {
+    display: block;
+    text-align: center;
+    list-style-type: none;
+}
+
+#homeBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin: auto;
 }
