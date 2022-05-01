@@ -115,14 +115,15 @@ function questionClick() {
     if (this.value !== questions[questionIndexNow].answer ) {
         secLeft -= 15;
         if (secLeft <= 0) {
-            secLeft = 0;
+            // secLeft = 0;
             clearInterval(secLeft);
         }
         timeEl.textContent = "Time:" + secLeft;
         scoreEl.textContent = "Score: " + score;
 
         feedbackEl.textContent = "Wrong! 15 seconds deduct.";
-    } else {
+    } 
+    else {
         score += 20;
         scoreEl.textContent = "Score: " + score;
         feedbackEl.textContent = "Correct!";

@@ -1,5 +1,19 @@
 # coding-quiz-assessment
 As developer, I'm making an assessment for myself or other developers-in-training in a form of multiple choice questions in order to assesst our familiarity in basic JavaScript. Test-takers will be given limited amount of time to answer all questions and time will start ticking as soon as they click on "begin". Scores will be displayed at the end. 
+
+## URL
+Deployed: https://binnie51.github.io/coding-quiz-assessment/
+
+## Technologies
+* HTML
+* CSS
+* JavaScript
+
+## Screenshots
+![quiz-homepage](./screenshots/quizTitle.PNG)
+
+Taking the quiz itself 
+![take-quiz]()
 ## User Story
 
 ```
@@ -23,3 +37,6 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 ```
+## License
+Copyright (c) Vincent Tjia. All rights reserved.
+License under MIT.
