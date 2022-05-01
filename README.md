@@ -13,7 +13,7 @@ Deployed: https://binnie51.github.io/coding-quiz-assessment/
 ![quiz-homepage](./screenshots/quizTitle.PNG)
 
 Taking the quiz itself 
-![take-quiz]()
+![take-quiz](./screenshots/quiz2.PNG)
 ## User Story
 
 ```
