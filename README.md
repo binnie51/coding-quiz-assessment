@@ -38,5 +38,5 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 ## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 Copyright (c) Vincent Tjia. All rights reserved.
-License under MIT.
