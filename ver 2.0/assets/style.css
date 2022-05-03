@@ -2,7 +2,8 @@
     /* colors selections */
     --background-clr: #FFCC00;
     --text-clr1: #660BAB;
-    --text-clr2: #104BA9;
+    --button-clr1: #104BA9;
+    --button-clr2: #7931B1;
 
     /* font weights */
     --f-regular: 400;
@@ -12,8 +13,20 @@
 * {
     font-family: 'Monda', sans-serif;
     background-color: var(--background-clr);
+    color: var(--text-clr1);
+    margin: 20px;
 }
 
 h1 {
-    font-weight: var(--f-regular);
+    font-weight: var(--f-bold);
+    color: black;
+}
+
+/* obsecure styling */
+#startBtn {
+    background-color: var(--button-clr1);
+}
+
+#highScoreBtn {
+    background-color: var(--button-clr2);
 }

@@ -18,26 +18,30 @@
         <div class="container-fluid">
 
             <!-- top: timer & score-->
-            <div class="row header">
-                <!-- timer -->
-                <div class="col text-left" id="timer">
-                    <i class="far fa-clock"></i> Time: <span id="clockTick">0</span>
-                </div>
-                <div class="col text-left" style="display: none;">Time's Up!</div>
+            <div class="row">
                 <!-- score -->
-                <div class="col text-right">
+                <div class="col text-left">
                     <div id="score" syle="display: none;">Scores: </div>
                 </div>
+                <!-- timer -->
+                <div class="col text-right" id="timer">
+                    <i class="far fa-clock"></i> Time: <span id="clockTick">0</span>
+                </div>
+                <div class="col text-right" style="display: none;">Time's Up!</div>
             </div>
 
             <div id="quiz-container" class="row text-center">
-                <div class="col-md-2"></div>
-                <main class="col-md-8">
+                <div class="col-md-2 justify-content-center"></div>
+                <main class="col-md-8 mt-5">
                     <!-- title page -->
-                    <div class="m-2 justify-content-center" id="title">
-                        <h1 class="font-weight-bold pl-5 pr-5">Basic JavaScript</h1>
+                    <div class="m-2 " id="title">
+                        <h1 class="font-weight-bold">Basic JavaScript</h1>
                         <h2 class="p-5">Quiz your knowledge the JavaScript fundamentals!</h2>
-                        <button type="button" class="btn btn-info ml-5 align-center" id="startBtn"
+                        <!-- essential buttons -->
+                        <div class="col m-2 ">
+                            <button type="button" class="btn btn-info m-2" id="startBtn">Start the Quiz</button> <br>
+                            <button type="button" class="btn btn-info m-2" id="highScoreBtn">High Scores 👑</button>
+                        </div>    
                     </div>
                 </main>
             </div>
