@@ -1,0 +1,19 @@
+:root {
+    /* colors selections */
+    --background-clr: #FFCC00;
+    --text-clr1: #660BAB;
+    --text-clr2: #104BA9;
+
+    /* font weights */
+    --f-regular: 400;
+    --f-bold:700;
+}
+
+* {
+    font-family: 'Monda', sans-serif;
+    background-color: var(--background-clr);
+}
+
+h1 {
+    font-weight: var(--f-regular);
+}
