@@ -33,12 +33,12 @@
                 <!-- all content is align center -->
                 <main class="d-flex justify-content-center flex-wrap">
                     <!-- title page (hide when game start) -->
-                    <div class="title my-5">
+                    <div class="title my-5 mx-4">
                         <h1 class="font-weight-bold text-center my-5">Basic JavaScript ver2.0</h1>
                         <h2 class="text-center my-4">Quiz your knowledge on the fundamentals!</h2>
                         <!-- menu buttons -->
-                        <div class="text-center">
-                            <button type="button" class="row btn btn-info btn-lg m-3 px-4" id="tart-btn">Start the Quiz</button> <br>
+                        <div class="text-center my-5">
+                            <button type="button" class="row btn btn-info btn-lg m-3 px-4" id="start-btn">Start the Quiz</button> <br>
                             <button type="button" class="row btn btn-info btn-lg m-3" id="high-score-btn">High Scores 👑</button>
                         </div>    
                     </div>
@@ -54,14 +54,16 @@
                             <h4 class="text-center">Question:</h4>
                             <h2 class="p-3 mx-4 border border-dark text-center" id="questions-display"> What is JavaScript?</h2>
                             
-                            <div class="m-4">
-                                <p class="" id="choices">Programming language of the Web, used for both client-side and server-side development.</p>
-                                <p class="" id="choices">Language to style HTML document(s)</p>
+                            <!-- muliple choices field (target the p tag) -->
+                            <div class="m-4" id="choices">
+                                <!-- <p class="" id="choices"></p> -->
+                                <!-- <p class="" id="choices">Language to style HTML document(s)</p>
                                 <p class="" id="choices">A standard language for storing, manipulating and retrieving data in databases</p>
-                                <p class="" id="choices">All the above</p>
+                                <p class="" id="choices">All the above</p> -->
                             </div>
+
                             <!-- if user answer correctly, p tag turns "correct!" on a "green', otherwise "red"   -->
-                            <p class="text-right border-dark border-top text-danger mx-4" id="answer-revealed"></p>
+                            <p class="text-right border-dark border-top mx-4" id="answer-revealed"></p>
                         </div>
                     </div>
 
@@ -74,7 +76,7 @@
                             <h1 class="" id="final-score">100</h1>
                         </div>
 
-                        <!-- form submit to save personal achievement -->
+                        <!-- form control to score -->
                         <form>
                             <div class="row mx-2 my-4 align-items-center">
                                 <div class="col-auto">
@@ -91,12 +93,12 @@
                     </div>
 
                     <!-- leaderboard page -->
-                    <div class="text-center hide">
+                    <div class="scoreboard-container text-center hide">
                         <h1 class="my-5">Here's our JS Champs 👑</h1>
                         <h4 class="my-3">Are you the next?</h4>
                         <!-- retrieve record from the local storage (limit up to 3 users) -->
-                        <ol class="list-group " id="leader-board-list">
-                            <li class="list-group-item list-group-item-info">
+                        <ol class="list-group" id="leader-board-list">
+                            <!-- <li class="list-group-item list-group-item-info">
                                 VT - 50
                             </li>
                             <li class="list-group-item list-group-item-info">
@@ -104,7 +106,7 @@
                             </li>
                             <li class="list-group-item list-group-item-info">
                                 VT - 10
-                            </li>
+                            </li> -->
                         </ol>
                         <button class="btn btn-info mt-4">Return to Home</button>
                     </div>

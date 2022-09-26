@@ -5,15 +5,22 @@ var startBtn = document.getElementById("start-btn");
 var highScoreBtn = document.getElementById("high-score-btn");
 // questions variables
 var questionEl = document.querySelector(".questions-display");
-var answerEl = document.querySelector
-var randomQuestions, currQIndex;
 
+var answerEl = document.querySelector("#answer-revealed");
+var progressEl = document.querySelector(".progress-bar");
+var randomQuestions, currQIndex;
+// containers 
 var titleContainer = document.querySelector(".title");
 var quizContainer = document.querySelector(".quiz-Container");
+var endContainer = document.querySelector(".ending-container");
+var scoreboardContainer = document.querySelector(".scoreboard-container");
 
 var initTime = 60;
 var score = 0;
-
+var intervalId;
+// time spend on each question
+var questionTime = 15;
+var totalTime = questions.length * questionTime;
 
 // Set of questions
 const questions = [
@@ -44,7 +51,27 @@ const questions = [
     }
 ];
 
-// init 60 seconds timer, decrement by 1000 or "1 sec"
+// Initialize my game
+startBtn.addEventListener("click", gameStart);
+function gameStart() {
+    // hide title, show quiz 
+    titleContainer.classList.add("hide");
+    quizContainer.classList.remove("hide");
+
+    
+
+    scoreEl.textContent = "Score: " + score;
+    // randomized questions object
+    randomQuestions = questions.sort(() => Math.floor() - .5);
+    currQIndex = 0;
+    intervalId = setInterval(function() {
+        clockTick();
+    }, 1000);
+
+    fetchQuestion();
+}
+
+// init 60 seconds timer, decrement by 1000 or "1 second"
 var clockTick = setInterval(function () {
     --totalTime;
     timeEl.textContent = "Time: " + initTime;
@@ -53,29 +80,54 @@ var clockTick = setInterval(function () {
     if (totalTime <= 0){
         clearInterval(clockTick);
         // save player time to local storage "score"
-        localStorage.setItem("", score);
+        localStorage.setItem("score", score);
         // end the quiz by calling the ending screen function
         endQuiz();
     }
 }, 1000);
 
-// Initialize my game
-startBtn.addEventListener("click", startGame);
-function gameStart() {
-    // hide title, show quiz 
-    titleContainer.classList.add("hide");
-    quizContainer.classList.remove("hide");
-
-    scoreEl.textContent = "Score: " + score;
-    // randomized questions object
-    randomQuestions = questions.sort(() => Math.floor() - .5);
-    currQIndex = 0;
-
-    fetchQuestion();
-}
-
 // grab a random question from the list 
 function fetchQuestion() {
+    // grab questions from the object key, assign it to a var
     var currentQuestion = questions[currQIndex];
-    questionEl.innerHTML = currentQuestion;
+    if (currentQuestion === undefined) {
+        localStorage.setItem("score", JSON.stringify(score));
+        endQuiz();
+    }
+    questionEl.textContent = currentQuestion.question;
+
+    answerEl.innerHTML = "";
+    currentQuestion.choices.forEach(element => {
+        // create button tags for each multiple choices
+        const choiceNode = document.createElement("p");
+
+
+    });
+}
+
+// performs checks on the answer
+function clickCheck(event){
+    let selectedChoice = event.target.dataset.choices;
+    let currentQuestion = questions[currQIndex];
+
+    if(selectedChoice === currentQuestion.answer) {
+        score += 20;
+        answerEl.textContent = "Correct! 👍";
+        answerEl.setAttribute("text-success");
+        // 1 second momentum 
+        setTimeout(function (){
+            answerEl.innerHTML = "";
+        }, 1000);
+    } 
+    else {
+        totalTime -= 15;
+
+        answerEl.textContent = "That's not the correct answer!";
+        answerEl.setAttribute("text-danger");
+        // 1 second momentum
+        setTimeout(function (){
+            answerEl.innerHTML = "";
+        }, 1000);
+    }
+    fetchQuestion();
 }
