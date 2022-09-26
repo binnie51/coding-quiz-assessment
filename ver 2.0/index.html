@@ -14,40 +14,105 @@
         <link rel="stylesheet" href="./assets/style.css">
     </head>
     <body>
-        <!-- main content -->
+        <!-- main environment -->
         <div class="container-fluid">
-
-            <!-- top: timer & score-->
-            <div class="row">
+            <!-- top section: timer & score-->
+            <div class="row m-4">
                 <!-- score -->
                 <div class="col text-left">
-                    <div id="score" syle="display: none;">Scores: </div>
+                    <p id="score" syle="display: none;">Score: </p>
                 </div>
                 <!-- timer -->
                 <div class="col text-right" id="timer">
-                    <i class="far fa-clock"></i> Time: <span id="clockTick">0</span>
+                    <i class="far fa-clock"></i> Time: <span id="clockTick"></span>
                 </div>
-                <div class="col text-right" style="display: none;">Time's Up!</div>
+                <div class="col text-right hide">Time's Up!</div>
             </div>
 
-            <div id="quiz-container" class="row text-center">
-                <div class="col-md-2 justify-content-center"></div>
-                <main class="col-md-8 mt-5">
-                    <!-- title page -->
-                    <div class="m-2 " id="title">
-                        <h1 class="font-weight-bold">Basic JavaScript</h1>
-                        <h2 class="p-5">Quiz your knowledge the JavaScript fundamentals!</h2>
-                        <!-- essential buttons -->
-                        <div class="col m-2 ">
-                            <button type="button" class="btn btn-info m-2" id="startBtn">Start the Quiz</button> <br>
-                            <button type="button" class="btn btn-info m-2" id="highScoreBtn">High Scores 👑</button>
+            <div class="quiz-container">
+                <!-- all content is align center -->
+                <main class="d-flex justify-content-center flex-wrap">
+                    <!-- title page (hide when game start) -->
+                    <div class="title my-5">
+                        <h1 class="font-weight-bold text-center my-5">Basic JavaScript ver2.0</h1>
+                        <h2 class="text-center my-4">Quiz your knowledge on the fundamentals!</h2>
+                        <!-- menu buttons -->
+                        <div class="text-center">
+                            <button type="button" class="row btn btn-info btn-lg m-3 px-4" id="tart-btn">Start the Quiz</button> <br>
+                            <button type="button" class="row btn btn-info btn-lg m-3" id="high-score-btn">High Scores 👑</button>
                         </div>    
+                    </div>
+
+                    <!-- display quiz & muliple choices (unhide when game start) -->
+                    <div class="m-2 question-container hide">
+                        <div>
+                             <!-- progress-bar -->
+                            <div class="progress mb-4 mx-4">
+                                <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+
+                            <h4 class="text-center">Question:</h4>
+                            <h2 class="p-3 mx-4 border border-dark text-center" id="questions-display"> What is JavaScript?</h2>
+                            
+                            <div class="m-4">
+                                <p class="" id="choices">Programming language of the Web, used for both client-side and server-side development.</p>
+                                <p class="" id="choices">Language to style HTML document(s)</p>
+                                <p class="" id="choices">A standard language for storing, manipulating and retrieving data in databases</p>
+                                <p class="" id="choices">All the above</p>
+                            </div>
+                            <!-- if user answer correctly, p tag turns "correct!" on a "green', otherwise "red"   -->
+                            <p class="text-right border-dark border-top text-danger mx-4" id="answer-revealed"></p>
+                        </div>
+                    </div>
+
+                    <!-- ending page -->
+                    <div class="ending-container container text-center m-2 hide">
+                        <h2 class="my-5">Great, you've finished the quiz! 🙌</h2>
+                        <div class="border border-dark mx-4 p-5">
+                            <p class="">You scored:</p>
+                            <!-- fetch total score from local storage -->
+                            <h1 class="" id="final-score">100</h1>
+                        </div>
+
+                        <!-- form submit to save personal achievement -->
+                        <form>
+                            <div class="row mx-2 my-4 align-items-center">
+                                <div class="col-auto">
+                                    <label for="inputInitials" class="col-form-label">Enter your initials:</label>
+                                  </div>
+                                  <div class="col-auto">
+                                    <input type="text" id="inputInitials" class="form-control">
+                                  </div>
+                                  <div class="col-auto">
+                                    <button type="submit" class="btn btn-info">Submit</button>
+                                  </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- leaderboard page -->
+                    <div class="text-center hide">
+                        <h1 class="my-5">Here's our JS Champs 👑</h1>
+                        <h4 class="my-3">Are you the next?</h4>
+                        <!-- retrieve record from the local storage (limit up to 3 users) -->
+                        <ol class="list-group " id="leader-board-list">
+                            <li class="list-group-item list-group-item-info">
+                                VT - 50
+                            </li>
+                            <li class="list-group-item list-group-item-info">
+                                VT - 20
+                            </li>
+                            <li class="list-group-item list-group-item-info">
+                                VT - 10
+                            </li>
+                        </ol>
+                        <button class="btn btn-info mt-4">Return to Home</button>
                     </div>
                 </main>
             </div>
         </div>
 
-        <!-- Jquery, Bootstrap JS, and JS  -->
+        <!-- Jquery, Bootstrap JS, and JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="./assets/script.js"></script>

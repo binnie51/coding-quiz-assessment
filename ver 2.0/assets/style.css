@@ -2,19 +2,23 @@
     /* colors selections */
     --background-clr: #FFCC00;
     --text-clr1: #660BAB;
-    --button-clr1: #104BA9;
-    --button-clr2: #7931B1;
+    --text-clr2: #9B7D00;
 
     /* font weights */
     --f-regular: 400;
     --f-bold:700;
 }
 
+/* universal selectors */
 * {
     font-family: 'Monda', sans-serif;
     background-color: var(--background-clr);
-    color: var(--text-clr1);
-    margin: 20px;
+    /* color: var(--text-clr1);  */
+}
+
+/* general selectors */
+body {
+    font-size: 16px;
 }
 
 h1 {
@@ -22,11 +26,22 @@ h1 {
     color: black;
 }
 
-/* obsecure styling */
-#startBtn {
-    background-color: var(--button-clr1);
+h2 {
+    font-weight: var(--f-bold);
 }
 
-#highScoreBtn {
-    background-color: var(--button-clr2);
+/* to hide elements once the the Start button has been clicked */
+.hide {
+    display: none; 
+}
+
+/* styling targeting choices */
+#choices {
+    font-size: 1.5em;
+}
+
+#choices:hover {
+    color: whitesmoke;
+    background-color: darkslategray;
+    cursor: pointer;
 }

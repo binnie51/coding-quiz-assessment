@@ -1,6 +1,18 @@
-// global variables
+// global element variables
 var timeEl = document.getElementById("timer");
 var scoreEl = document.getElementById("score");
+var startBtn = document.getElementById("start-btn");
+var highScoreBtn = document.getElementById("high-score-btn");
+// questions variables
+var questionEl = document.querySelector(".questions-display");
+var answerEl = document.querySelector
+var randomQuestions, currQIndex;
+
+var titleContainer = document.querySelector(".title");
+var quizContainer = document.querySelector(".quiz-Container");
+
+var initTime = 60;
+var score = 0;
 
 
 // Set of questions
@@ -31,3 +43,39 @@ const questions = [
         answer: 'for (i = 0; i <= 5; i++)'
     }
 ];
+
+// init 60 seconds timer, decrement by 1000 or "1 sec"
+var clockTick = setInterval(function () {
+    --totalTime;
+    timeEl.textContent = "Time: " + initTime;
+    // if time runs out, 
+    // end the quiz, clear interval and save the score to the local storage
+    if (totalTime <= 0){
+        clearInterval(clockTick);
+        // save player time to local storage "score"
+        localStorage.setItem("", score);
+        // end the quiz by calling the ending screen function
+        endQuiz();
+    }
+}, 1000);
+
+// Initialize my game
+startBtn.addEventListener("click", startGame);
+function gameStart() {
+    // hide title, show quiz 
+    titleContainer.classList.add("hide");
+    quizContainer.classList.remove("hide");
+
+    scoreEl.textContent = "Score: " + score;
+    // randomized questions object
+    randomQuestions = questions.sort(() => Math.floor() - .5);
+    currQIndex = 0;
+
+    fetchQuestion();
+}
+
+// grab a random question from the list 
+function fetchQuestion() {
+    var currentQuestion = questions[currQIndex];
+    questionEl.innerHTML = currentQuestion;
+}
